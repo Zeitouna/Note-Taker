@@ -12,7 +12,7 @@ const readFromFile = (filePath) => {
 
 const writeToFile = (filePath, data) => {
   try {
-    fs.writeFileSync(filePath, data);
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
   } catch (error) {
     console.log(error.message);
   }
@@ -22,7 +22,7 @@ const readAndAppend = (data, filePath) => {
   try {
     const content = readFromFile(filePath);
     content.push(data);
-    writeToFile(filePath, JSON.stringify(content, null, 4));
+    writeToFile(filePath, content);
   } catch (error) {
     console.log(`[ERROR]: read and append file - ${error.message}`);
   }
