@@ -37,4 +37,5 @@ app.delete("/api/notes/:info", (req, res) => {
   res.json({ msg: "success" });
 });
 
-app.listen(3001, () => console.log("server starting"));
+PORT = proces.env.PORT || 3001;
+app.listen(PORT, () => console.log("server starting"));
