@@ -24,14 +24,14 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:info", (req, res) => {
   const db = readFromFile("./db/db.json");
   // remove the req.params.info entry from the db
-  const newDb = [];
-  for (let i = 0; i < db.length; i++) {
+  const newDb = db.filter((note) => note.id !== req.params.info);
+  /*for (let i = 0; i < db.length; i++) {
     if (db[i].id === req.params.info) {
       console.log("Entry found at position ", i);
     } else {
       newDb.push(db[i]);
     }
-  }
+  }*/
   writeToFile("./db/db.json", newDb);
   // update the db.json
   res.json({ msg: "success" });
